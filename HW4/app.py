@@ -45,19 +45,6 @@ app.layout = html.Div([
         value = spc[0]
     ),
     
-    #html.Label('Boroughs'),
-    #dcc.Checklist(
-    #    id = 'Boroughs',
-    #    options=[
-    #        {'label': 'Bronx', 'value': 'Bronx'},
-    #        {'label': 'Queens', 'value': 'Queens'},
-    #        {'label': 'Brooklyn', 'value': 'Brooklyn'},
-    #        {'label': 'Manhattan', 'value': 'Manhattan'},
-    #        {'label': 'Staten Island', 'value': 'Staten Island'}
-    #    ],
-    #    value=['Bronx','Queens','Brooklyn','Manhattan','Staten Island']
-    #),
-    
     dcc.Graph(id = 'nycHealth'),
     dcc.Graph(id = 'boroHealth'),
     dcc.Graph(id = 'StewardEffect')
