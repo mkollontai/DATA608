@@ -1,0 +1,129 @@
+<html>
+<head>
+<style>
+h1, h2, h3, p, div, form, input {
+	text-align: center;
+}
+table.center {
+	margin-left:auto;
+	margin-right:auto;
+}
+</style>
+<title>DATA608 HW5 M Kollontai</title>
+</head>
+
+<body>
+
+<h1>DATA608 Homework #5</h1>
+
+<h2>Misha Kollontai</h2>
+
+<h3>Question 1: Word-Reverser!</h3>
+<script type="text/javascript">
+
+document.write('<p>Create a function to reverse any word that you type in. This can be typed into either an input<br>box or an alert box, and then print the result in a box or on the webpage.</p><br>');
+</script>
+
+<script type="text/javascript">
+
+function flip(word){
+    var w = word;
+    var split = w.split('');
+	var w_len = split.length;
+	var rev_w = '';
+	for (var i = 0; i < w_len; i++) {
+		rev_w += split[w_len - i - 1];
+	}
+	str1 = 'Flipped string is <b>' + rev_w + '</b>';
+	return (str1);
+};
+
+function calc1(){
+    var t = document.getElementById("target_w");
+    t.innerHTML = flip(document.getElementById('word').value);
+}
+</script>
+<p>
+<form>
+    <input type="text" id="word" name="word">
+    <input type="button" value="FLIP!" onClick="calc1();">
+</form>
+</p>
+
+
+
+<h3>Question 2: 20 Multiples!</h3>
+
+<script type="text/javascript">
+
+document.write('<p>Create a function that takes an input number, and prints a table <br>with the first 20 multiples of the number, in order 5x4</p><br>');
+</script>
+
+<script type="text/javascript">
+
+function mult(n){
+    var w = n;
+	var str2 = '<table class="center"><br>';
+	for (var i = 0; i < 5; i++) {
+		for(var j=0; j < 4; j++) {
+			if (j == 0) {
+				str2 += '<tr>'
+			}
+			var m = '<td>' + w * ((i*4)+j+1)
+			str2 += '<td>' + m + '</td>'
+			if (j == 3) {
+				str2 += '</tr>'
+			}
+		}
+	}
+	str2 += '<br></table>'
+	return (str2);
+};
+
+function calc2(){
+    var t = document.getElementById("num");
+    t.innerHTML = mult(document.getElementById('n').value);
+}
+</script>
+<p>
+<form>
+    <input type="number" id="n" size="4">
+    <input type="button" value="20 Multiples" onClick="calc2();">
+</form>
+</p>
+
+
+<h3>Question 3: Presidents!</h3>
+
+<script type="text/javascript">
+
+document.write('<p>Write a function to load the presidents.csv data and display the data as an html table (you <br> may use a cdv parser from any available library, though I encourage you to try the d3 one).</p>');
+document.write("<p>Now that you have the presidents data loaded, write a function that will return that<br>president's height & weight when you type it in. This can be typed into either an input box or<br>an alert box, and then print the result in a box or on the webpage.</p><br>");
+</script>
+
+<script src='https://d3js.org/d3.v4.min.js'><;/script>
+
+//<html><head>    <title>Learn D3 in 5 minutes</title></head><body><h3>Today is a beautiful day!!</h3><script src='https://d3js.org/d3.v4.min.js'></script><script>    d3.select('h3').style('color', 'darkblue');    d3.select('h3').style('font-size', '24px');</script>
+
+
+<script>
+var dataset;  //Global var
+ 
+d3.csv('https://raw.githubusercontent.com/charleyferrari/CUNY_DATA_608/master/module5/data/presidents.csv', function(error, data) {
+    // If error is not null, something went wrong.
+    if (error) {  
+          console.log(error);  //Log the error.
+    } else {      
+          console.log(data);   //Log the data.
+          dataset = data; // Give the data a global scope
+          //Call some other functions that generate the visualization
+    }
+});
+</script> 
+
+
+<div id="target_w"></div>
+<div id="num"></div>
+
+</body>
+</html>
